@@ -20,9 +20,9 @@ const questions = [
     },
     {
         id: 4,
-        text: "Nutzen Sie ein Passwort-Manager-Tool?",
-        yesRecommendation: "Perfekt! Ein Passwort-Manager ist ein wichtiges Sicherheitstool.",
-        noRecommendation: "Erwägen Sie die Nutzung eines Passwort-Managers für bessere Sicherheit und Bequemlichkeit."
+        text: "Nutzen Sie häufig öffentliche WLANs (z.B. in der Bahn, im Café oder im Hotel)?",
+        yesRecommendation: "Erwägen Sie die Nutzung eines VPN-Dienstes, um Ihre Daten in öffentlichen Netzwerken zu schützen.",
+        noRecommendation: "Sehr gut! Die Nutzung öffentlicher WLANs birgt immer ein Sicherheitsrisiko."
     },
     {
         id: 5,
