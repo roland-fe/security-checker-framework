@@ -3,32 +3,107 @@ const questions = [
     {
         id: 1,
         text: "Verwenden Sie das gleiche Passwort für mehrere Dienste?",
-        yesRecommendation: "Verwenden Sie für jeden Dienst ein einzigartiges Passwort. Ein Passwort-Manager kann Ihnen dabei helfen.",
-        noRecommendation: "Sehr gut! Weiter so mit den unterschiedlichen Passwörtern."
+        yesRecommendation: "Die Verwendung des gleichen Passworts ist ein erhebliches Sicherheitsrisiko. Wenn ein Dienst kompromittiert wird, können Angreifer Ihre Zugangsdaten auch für andere Dienste nutzen. Konkrete Handlungsempfehlungen:\n\n" +
+            "1. Nutzen Sie einen Passwort-Manager wie Bitwarden, 1Password oder KeePass\n" +
+            "2. Erstellen Sie für jeden Dienst ein einzigartiges, starkes Passwort\n" +
+            "3. Aktivieren Sie die Zwei-Faktor-Authentifizierung wo möglich\n" +
+            "4. Nutzen Sie Passkeys wo verfügbar - diese moderne Authentifizierungsmethode ist sicherer als Passwörter und einfacher zu nutzen\n" +
+            "5. Überprüfen Sie regelmäßig, ob Ihre E-Mail-Adresse in bekannten Datenlecks aufgetaucht ist (z.B. auf haveibeenpwned.com)",
+        noRecommendation: "Ausgezeichnet! Die Verwendung unterschiedlicher Passwörter ist eine wichtige Sicherheitsmaßnahme. Denken Sie daran, Ihre Passwörter regelmäßig zu aktualisieren und die Zwei-Faktor-Authentifizierung zu nutzen, wo immer möglich. Erwägen Sie auch die Nutzung von Passkeys für Dienste, die diese moderne Authentifizierungsmethode unterstützen.",
+        isPositiveOnNo: true  // "Nein" ist die sichere Antwort
     },
     {
         id: 2,
         text: "Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) wo immer möglich?",
-        yesRecommendation: "Ausgezeichnet! 2FA ist eine der wichtigsten Sicherheitsmaßnahmen.",
-        noRecommendation: "Aktivieren Sie 2FA für alle wichtigen Dienste wie E-Mail, Banking und Social Media."
+        yesRecommendation: "Sehr gut! Die Zwei-Faktor-Authentifizierung ist eine der wichtigsten Sicherheitsmaßnahmen. Hier sind einige Tipps für die optimale Nutzung:\n\n" +
+            "1. Nutzen Sie bevorzugt Authenticator-Apps (z.B. Google Authenticator, Microsoft Authenticator) statt SMS-Codes\n" +
+            "2. Speichern Sie Backup-Codes sicher (z.B. in Ihrem Passwort-Manager)\n" +
+            "3. Aktivieren Sie 2FA besonders für wichtige Dienste wie E-Mail, Banking und Social Media\n" +
+            "4. Erwägen Sie für maximale Sicherheit die Nutzung von Hardware-Tokens (z.B. YubiKey)",
+        noRecommendation: "Die Zwei-Faktor-Authentifizierung ist ein wichtiger zusätzlicher Sicherheitsschutz. Ohne 2FA können Angreifer mit gestohlenen Passwörtern direkten Zugriff auf Ihre Accounts erlangen. Konkrete Handlungsempfehlungen:\n\n" +
+            "1. Beginnen Sie mit der Aktivierung von 2FA für Ihre wichtigsten Accounts (E-Mail, Banking)\n" +
+            "2. Nutzen Sie eine Authenticator-App wie Google Authenticator oder Microsoft Authenticator\n" +
+            "3. Vermeiden Sie nach Möglichkeit SMS-basierte 2FA, da diese anfällig für SIM-Swapping-Angriffe sein kann\n" +
+            "4. Speichern Sie die Backup-Codes sicher, falls Sie Ihr Gerät verlieren\n" +
+            "5. Für besonders sensible Daten: Erwägen Sie die Nutzung von Hardware-Tokens wie YubiKey",
+        isPositiveOnNo: false  // "Ja" ist die sichere Antwort
     },
     {
         id: 3,
         text: "Führen Sie regelmäßige Updates Ihrer Software und Systeme durch?",
-        yesRecommendation: "Sehr gut! Regelmäßige Updates sind wichtig für die Sicherheit.",
-        noRecommendation: "Aktivieren Sie automatische Updates und führen Sie regelmäßige Systemaktualisierungen durch."
+        yesRecommendation: "Ausgezeichnet! Regelmäßige Updates sind essentiell für Ihre digitale Sicherheit. Hier sind einige Best Practices:\n\n" +
+            "1. Aktivieren Sie automatische Updates wo immer möglich\n" +
+            "2. Führen Sie Updates am besten sofort durch, wenn sie verfügbar sind\n" +
+            "3. Überprüfen Sie regelmäßig auch Updates für:\n" +
+            "   - Browser und Browser-Erweiterungen\n" +
+            "   - Mobile Apps\n" +
+            "   - Router und IoT-Geräte\n" +
+            "4. Erstellen Sie vor größeren System-Updates ein Backup",
+        noRecommendation: "Ohne regelmäßige Updates sind Ihre Geräte und Daten gefährdet. Veraltete Software enthält oft bekannte Sicherheitslücken, die von Angreifern ausgenutzt werden können. Konkrete Handlungsempfehlungen:\n\n" +
+            "1. Aktivieren Sie automatische Updates für:\n" +
+            "   - Betriebssystem (Windows, macOS, Linux)\n" +
+            "   - Browser (Chrome, Firefox, Safari)\n" +
+            "   - Antiviren-Software\n" +
+            "2. Richten Sie einen wöchentlichen Update-Check ein\n" +
+            "3. Nutzen Sie Tools wie:\n" +
+            "   - Windows Update\n" +
+            "   - Software Update (macOS)\n" +
+            "   - apt update/upgrade (Linux)\n" +
+            "4. Erstellen Sie vor Updates immer ein Backup\n" +
+            "5. Prüfen Sie auch Updates für Router, Smart-Home-Geräte und IoT-Devices",
+        isPositiveOnNo: false  // "Ja" ist die sichere Antwort
     },
     {
         id: 4,
         text: "Nutzen Sie häufig öffentliche WLANs (z.B. in der Bahn, im Café oder im Hotel)?",
-        yesRecommendation: "Erwägen Sie die Nutzung eines VPN-Dienstes, um Ihre Daten in öffentlichen Netzwerken zu schützen.",
-        noRecommendation: "Sehr gut! Die Nutzung öffentlicher WLANs birgt immer ein Sicherheitsrisiko."
+        yesRecommendation: "Die Nutzung öffentlicher WLANs birgt erhebliche Sicherheitsrisiken. Hier sind konkrete Handlungsempfehlungen:\n\n" +
+            "1. Nutzen Sie einen vertrauenswürdigen VPN-Dienst (z.B. ProtonVPN, NordVPN, Mullvad)\n" +
+            "2. Aktivieren Sie die Firewall auf Ihrem Gerät\n" +
+            "3. Deaktivieren Sie die automatische WLAN-Verbindung\n" +
+            "4. Nutzen Sie nach Möglichkeit Ihr Smartphone als Hotspot\n" +
+            "5. Vermeiden Sie sensible Transaktionen (z.B. Online-Banking) in öffentlichen Netzwerken\n" +
+            "6. Nutzen Sie die Zwei-Faktor-Authentifizierung für alle wichtigen Dienste\n" +
+            "7. Prüfen Sie die Netzwerkauthentizität (z.B. durch Nachfrage beim Personal)",
+        noRecommendation: "Sehr gut! Die Vermeidung öffentlicher WLANs ist eine wichtige Sicherheitsmaßnahme. Für den Fall, dass Sie doch einmal ein öffentliches WLAN nutzen müssen:\n\n" +
+            "1. Nutzen Sie einen VPN-Dienst\n" +
+            "2. Aktivieren Sie die Firewall\n" +
+            "3. Vermeiden Sie sensible Transaktionen\n" +
+            "4. Nutzen Sie nach Möglichkeit Ihr Smartphone als Hotspot",
+        isPositiveOnNo: true  // "Nein" ist die sichere Antwort
     },
     {
         id: 5,
         text: "Haben Sie eine Backup-Strategie für Ihre wichtigen Daten?",
-        yesRecommendation: "Ausgezeichnet! Regelmäßige Backups sind essentiell.",
-        noRecommendation: "Erstellen Sie regelmäßige Backups Ihrer wichtigen Daten, idealerweise an mehreren Orten."
+        yesRecommendation: "Ausgezeichnet! Hier sind einige Best Practices für Ihre Backup-Strategie:\n\n" +
+            "1. Nutzen Sie die 3-2-1-Regel:\n" +
+            "   - 3 Kopien Ihrer Daten\n" +
+            "   - 2 verschiedene Speichermedien\n" +
+            "   - 1 Backup an einem anderen Ort\n" +
+            "2. Automatisieren Sie Ihre Backups\n" +
+            "3. Testen Sie regelmäßig die Wiederherstellung\n" +
+            "4. Verschlüsseln Sie Ihre Backups\n" +
+            "5. Nutzen Sie eine Kombination aus:\n" +
+            "   - Lokalen Backups (externe Festplatten)\n" +
+            "   - Cloud-Backups (z.B. Backblaze, iCloud)\n" +
+            "   - NAS-Systemen für Zuhause",
+        noRecommendation: "Eine robuste Backup-Strategie ist essentiell für den Schutz Ihrer Daten. Hier ist ein konkreter Aktionsplan:\n\n" +
+            "1. Identifizieren Sie Ihre wichtigen Daten:\n" +
+            "   - Dokumente\n" +
+            "   - Fotos\n" +
+            "   - E-Mails\n" +
+            "   - Kontakte\n" +
+            "2. Implementieren Sie die 3-2-1-Regel:\n" +
+            "   - 3 Kopien Ihrer Daten\n" +
+            "   - 2 verschiedene Speichermedien\n" +
+            "   - 1 Backup an einem anderen Ort\n" +
+            "3. Wählen Sie geeignete Backup-Lösungen:\n" +
+            "   - Externe Festplatten für lokale Backups\n" +
+            "   - Cloud-Dienste (z.B. Backblaze, iCloud)\n" +
+            "   - NAS-Systeme für Zuhause\n" +
+            "4. Automatisieren Sie Ihre Backups\n" +
+            "5. Testen Sie regelmäßig die Wiederherstellung\n" +
+            "6. Verschlüsseln Sie Ihre Backups",
+        isPositiveOnNo: false  // "Ja" ist die sichere Antwort
     }
 ];
 
@@ -92,11 +167,22 @@ function showResults() {
     answers.forEach((answer, index) => {
         const question = questions[index];
         const recommendation = answer.answer ? question.yesRecommendation : question.noRecommendation;
+        // Prüfe, ob die aktuelle Antwort die sichere Option ist
+        const isPositive = answer.answer ? !question.isPositiveOnNo : question.isPositiveOnNo;
         
         resultsHTML += `
-            <div class="result-item bg-white p-6 rounded-lg shadow-md">
-                <h3 class="text-lg font-semibold mb-2">${question.text}</h3>
-                <p class="text-gray-700">${recommendation}</p>
+            <div class="result-item bg-white p-6 rounded-lg shadow-md border-l-4 ${isPositive ? 'border-green-500' : 'border-red-500'}">
+                <div class="flex items-start">
+                    <div class="flex-shrink-0 mr-4">
+                        <span class="text-2xl ${isPositive ? 'text-green-500' : 'text-red-500'}">
+                            ${isPositive ? '✓' : '✗'}
+                        </span>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">${question.text}</h3>
+                        <p class="text-gray-700">${recommendation}</p>
+                    </div>
+                </div>
             </div>
         `;
     });
@@ -120,6 +206,12 @@ function resetQuiz() {
     document.getElementById('result-container').classList.add('hidden');
     document.getElementById('question-container').classList.remove('hidden');
     showQuestion(currentQuestionIndex);
+    
+    // Scroll to top smoothly
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
 }
 
 // Start the application when the page loads
