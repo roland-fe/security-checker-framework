@@ -4,71 +4,74 @@ const questions = [
         id: 1,
         text: "Verwenden Sie das gleiche Passwort für mehrere Dienste?",
         yesRecommendation: "Die Verwendung des gleichen Passworts ist ein erhebliches Sicherheitsrisiko. Wenn ein Dienst kompromittiert wird, können Angreifer Ihre Zugangsdaten auch für andere Dienste nutzen. Konkrete Handlungsempfehlungen:\n\n" +
-            "1. Nutzen Sie einen Passwort-Manager wie Bitwarden, 1Password oder KeePass\n" +
-            "2. Erstellen Sie für jeden Dienst ein einzigartiges, starkes Passwort\n" +
-            "3. Aktivieren Sie die Zwei-Faktor-Authentifizierung wo möglich\n" +
-            "4. Nutzen Sie Passkeys wo verfügbar - diese moderne Authentifizierungsmethode ist sicherer als Passwörter und einfacher zu nutzen\n" +
-            "5. Überprüfen Sie regelmäßig, ob Ihre E-Mail-Adresse in bekannten Datenlecks aufgetaucht ist (z.B. auf haveibeenpwned.com)",
-        noRecommendation: "Ausgezeichnet! Die Verwendung unterschiedlicher Passwörter ist eine wichtige Sicherheitsmaßnahme. Denken Sie daran, Ihre Passwörter regelmäßig zu aktualisieren und die Zwei-Faktor-Authentifizierung zu nutzen, wo immer möglich. Erwägen Sie auch die Nutzung von Passkeys für Dienste, die diese moderne Authentifizierungsmethode unterstützen.",
+            "1. <i class='fas fa-key'></i> Nutzen Sie einen Passwort-Manager wie Bitwarden, 1Password oder KeePass\n" +
+            "2. <i class='fas fa-fingerprint'></i> Erstellen Sie für jeden Dienst ein einzigartiges, starkes Passwort\n" +
+            "3. <i class='fas fa-shield-alt'></i> Aktivieren Sie die Zwei-Faktor-Authentifizierung wo möglich\n" +
+            "4. <i class='fas fa-mobile-alt'></i> Nutzen Sie Passkeys wo verfügbar - diese moderne Authentifizierungsmethode ist sicherer als Passwörter und einfacher zu nutzen\n" +
+            "5. <i class='fas fa-search'></i> Überprüfen Sie regelmäßig, ob Ihre E-Mail-Adresse in bekannten Datenlecks aufgetaucht ist (z.B. auf haveibeenpwned.com)",
+        noRecommendation: "Ausgezeichnet! Die Verwendung unterschiedlicher Passwörter ist eine wichtige Sicherheitsmaßnahme. Denken Sie daran:\n\n" +
+            "1. <i class='fas fa-sync-alt'></i> Aktualisieren Sie Ihre Passwörter regelmäßig\n" +
+            "2. <i class='fas fa-shield-alt'></i> Nutzen Sie die Zwei-Faktor-Authentifizierung wo immer möglich\n" +
+            "3. <i class='fas fa-mobile-alt'></i> Erwägen Sie die Nutzung von Passkeys für Dienste, die diese moderne Authentifizierungsmethode unterstützen",
         isPositiveOnNo: true  // "Nein" ist die sichere Antwort
     },
     {
         id: 2,
         text: "Aktivieren Sie die Zwei-Faktor-Authentifizierung (2FA) wo immer möglich?",
         yesRecommendation: "Sehr gut! Die Zwei-Faktor-Authentifizierung ist eine der wichtigsten Sicherheitsmaßnahmen. Hier sind einige Tipps für die optimale Nutzung:\n\n" +
-            "1. Nutzen Sie bevorzugt Authenticator-Apps (z.B. Google Authenticator, Microsoft Authenticator) statt SMS-Codes\n" +
-            "2. Speichern Sie Backup-Codes sicher (z.B. in Ihrem Passwort-Manager)\n" +
-            "3. Aktivieren Sie 2FA besonders für wichtige Dienste wie E-Mail, Banking und Social Media\n" +
-            "4. Erwägen Sie für maximale Sicherheit die Nutzung von Hardware-Tokens (z.B. YubiKey)",
+            "1. <i class='fas fa-mobile-alt'></i> Nutzen Sie bevorzugt Authenticator-Apps (z.B. Google Authenticator, Microsoft Authenticator) statt SMS-Codes\n" +
+            "2. <i class='fas fa-key'></i> Speichern Sie Backup-Codes sicher (z.B. in Ihrem Passwort-Manager)\n" +
+            "3. <i class='fas fa-shield-alt'></i> Aktivieren Sie 2FA besonders für wichtige Dienste wie E-Mail, Banking und Social Media\n" +
+            "4. <i class='fas fa-usb'></i> Erwägen Sie für maximale Sicherheit die Nutzung von Hardware-Tokens (z.B. YubiKey)",
         noRecommendation: "Die Zwei-Faktor-Authentifizierung ist ein wichtiger zusätzlicher Sicherheitsschutz. Ohne 2FA können Angreifer mit gestohlenen Passwörtern direkten Zugriff auf Ihre Accounts erlangen. Konkrete Handlungsempfehlungen:\n\n" +
-            "1. Beginnen Sie mit der Aktivierung von 2FA für Ihre wichtigsten Accounts (E-Mail, Banking)\n" +
-            "2. Nutzen Sie eine Authenticator-App wie Google Authenticator oder Microsoft Authenticator\n" +
-            "3. Vermeiden Sie nach Möglichkeit SMS-basierte 2FA, da diese anfällig für SIM-Swapping-Angriffe sein kann\n" +
-            "4. Speichern Sie die Backup-Codes sicher, falls Sie Ihr Gerät verlieren\n" +
-            "5. Für besonders sensible Daten: Erwägen Sie die Nutzung von Hardware-Tokens wie YubiKey",
+            "1. <i class='fas fa-list-ol'></i> Beginnen Sie mit der Aktivierung von 2FA für Ihre wichtigsten Accounts (E-Mail, Banking)\n" +
+            "2. <i class='fas fa-mobile-alt'></i> Nutzen Sie eine Authenticator-App wie Google Authenticator oder Microsoft Authenticator\n" +
+            "3. <i class='fas fa-exclamation-triangle'></i> Vermeiden Sie nach Möglichkeit SMS-basierte 2FA, da diese anfällig für SIM-Swapping-Angriffe sein kann\n" +
+            "4. <i class='fas fa-key'></i> Speichern Sie die Backup-Codes sicher, falls Sie Ihr Gerät verlieren\n" +
+            "5. <i class='fas fa-usb'></i> Für besonders sensible Daten: Erwägen Sie die Nutzung von Hardware-Tokens wie YubiKey",
         isPositiveOnNo: false  // "Ja" ist die sichere Antwort
     },
     {
         id: 3,
         text: "Führen Sie regelmäßige Updates Ihrer Software und Systeme durch?",
         yesRecommendation: "Ausgezeichnet! Regelmäßige Updates sind essentiell für Ihre digitale Sicherheit. Hier sind einige Best Practices:\n\n" +
-            "1. Aktivieren Sie automatische Updates wo immer möglich\n" +
-            "2. Führen Sie Updates am besten sofort durch, wenn sie verfügbar sind\n" +
-            "3. Überprüfen Sie regelmäßig auch Updates für:\n" +
-            "   - Browser und Browser-Erweiterungen\n" +
-            "   - Mobile Apps\n" +
-            "   - Router und IoT-Geräte\n" +
-            "4. Erstellen Sie vor größeren System-Updates ein Backup",
+            "1. <i class='fas fa-robot'></i> Aktivieren Sie automatische Updates wo immer möglich\n" +
+            "2. <i class='fas fa-bolt'></i> Führen Sie Updates am besten sofort durch, wenn sie verfügbar sind\n" +
+            "3. <i class='fas fa-tools'></i> Überprüfen Sie regelmäßig auch Updates für:\n" +
+            "   - <i class='fas fa-globe'></i> Browser und Browser-Erweiterungen\n" +
+            "   - <i class='fas fa-mobile-alt'></i> Mobile Apps\n" +
+            "   - <i class='fas fa-wifi'></i> Router und IoT-Geräte\n" +
+            "4. <i class='fas fa-save'></i> Erstellen Sie vor größeren System-Updates ein Backup",
         noRecommendation: "Ohne regelmäßige Updates sind Ihre Geräte und Daten gefährdet. Veraltete Software enthält oft bekannte Sicherheitslücken, die von Angreifern ausgenutzt werden können. Konkrete Handlungsempfehlungen:\n\n" +
-            "1. Aktivieren Sie automatische Updates für:\n" +
-            "   - Betriebssystem (Windows, macOS, Linux)\n" +
-            "   - Browser (Chrome, Firefox, Safari)\n" +
-            "   - Antiviren-Software\n" +
-            "2. Richten Sie einen wöchentlichen Update-Check ein\n" +
-            "3. Nutzen Sie Tools wie:\n" +
-            "   - Windows Update\n" +
-            "   - Software Update (macOS)\n" +
-            "   - apt update/upgrade (Linux)\n" +
-            "4. Erstellen Sie vor Updates immer ein Backup\n" +
-            "5. Prüfen Sie auch Updates für Router, Smart-Home-Geräte und IoT-Devices",
+            "1. <i class='fas fa-robot'></i> Aktivieren Sie automatische Updates für:\n" +
+            "   - <i class='fas fa-desktop'></i> Betriebssystem (Windows, macOS, Linux)\n" +
+            "   - <i class='fas fa-globe'></i> Browser (Chrome, Firefox, Safari)\n" +
+            "   - <i class='fas fa-shield-virus'></i> Antiviren-Software\n" +
+            "2. <i class='fas fa-calendar-check'></i> Richten Sie einen wöchentlichen Update-Check ein\n" +
+            "3. <i class='fas fa-tools'></i> Nutzen Sie Tools wie:\n" +
+            "   - <i class='fas fa-windows'></i> Windows Update\n" +
+            "   - <i class='fas fa-apple'></i> Software Update (macOS)\n" +
+            "   - <i class='fas fa-linux'></i> apt update/upgrade (Linux)\n" +
+            "4. <i class='fas fa-save'></i> Erstellen Sie vor Updates immer ein Backup\n" +
+            "5. <i class='fas fa-network-wired'></i> Prüfen Sie auch Updates für Router, Smart-Home-Geräte und IoT-Devices",
         isPositiveOnNo: false  // "Ja" ist die sichere Antwort
     },
     {
         id: 4,
         text: "Nutzen Sie häufig öffentliche WLANs (z.B. in der Bahn, im Café oder im Hotel)?",
         yesRecommendation: "Die Nutzung öffentlicher WLANs birgt erhebliche Sicherheitsrisiken. Hier sind konkrete Handlungsempfehlungen:\n\n" +
-            "1. Nutzen Sie einen vertrauenswürdigen VPN-Dienst (z.B. ProtonVPN, NordVPN, Mullvad)\n" +
-            "2. Aktivieren Sie die Firewall auf Ihrem Gerät\n" +
-            "3. Deaktivieren Sie die automatische WLAN-Verbindung\n" +
-            "4. Nutzen Sie nach Möglichkeit Ihr Smartphone als Hotspot\n" +
-            "5. Vermeiden Sie sensible Transaktionen (z.B. Online-Banking) in öffentlichen Netzwerken\n" +
-            "6. Nutzen Sie die Zwei-Faktor-Authentifizierung für alle wichtigen Dienste\n" +
-            "7. Prüfen Sie die Netzwerkauthentizität (z.B. durch Nachfrage beim Personal)",
+            "1. <i class='fas fa-shield-alt'></i> Nutzen Sie einen vertrauenswürdigen VPN-Dienst (z.B. ProtonVPN, NordVPN, Mullvad)\n" +
+            "2. <i class='fas fa-fire'></i> Aktivieren Sie die Firewall auf Ihrem Gerät\n" +
+            "3. <i class='fas fa-wifi-slash'></i> Deaktivieren Sie die automatische WLAN-Verbindung\n" +
+            "4. <i class='fas fa-mobile-alt'></i> Nutzen Sie nach Möglichkeit Ihr Smartphone als Hotspot\n" +
+            "5. <i class='fas fa-lock'></i> Vermeiden Sie sensible Transaktionen (z.B. Online-Banking) in öffentlichen Netzwerken\n" +
+            "6. <i class='fas fa-key'></i> Nutzen Sie die Zwei-Faktor-Authentifizierung für alle wichtigen Dienste\n" +
+            "7. <i class='fas fa-user-check'></i> Prüfen Sie die Netzwerkauthentizität (z.B. durch Nachfrage beim Personal)",
         noRecommendation: "Sehr gut! Die Vermeidung öffentlicher WLANs ist eine wichtige Sicherheitsmaßnahme. Für den Fall, dass Sie doch einmal ein öffentliches WLAN nutzen müssen:\n\n" +
-            "1. Nutzen Sie einen VPN-Dienst\n" +
-            "2. Aktivieren Sie die Firewall\n" +
-            "3. Vermeiden Sie sensible Transaktionen\n" +
-            "4. Nutzen Sie nach Möglichkeit Ihr Smartphone als Hotspot",
+            "1. <i class='fas fa-shield-alt'></i> Nutzen Sie einen VPN-Dienst\n" +
+            "2. <i class='fas fa-fire'></i> Aktivieren Sie die Firewall\n" +
+            "3. <i class='fas fa-lock'></i> Vermeiden Sie sensible Transaktionen\n" +
+            "4. <i class='fas fa-mobile-alt'></i> Nutzen Sie nach Möglichkeit Ihr Smartphone als Hotspot",
         isPositiveOnNo: true  // "Nein" ist die sichere Antwort
     },
     {
@@ -173,37 +176,45 @@ function showResults() {
         const sections = recommendation.split('\n\n');
         const mainText = sections[0];
         const recommendations = sections.slice(1).map(section => {
-            // Convert numbered lists to structured HTML
-            return section.replace(/^\d+\.\s+(.*)$/gm, (match, content) => {
-                // Check if the content contains sub-points
-                if (content.includes(':')) {
-                    const [title, ...subPoints] = content.split(':');
-                    const subPointsHTML = subPoints.join(':').split('\n')
-                        .filter(point => point.trim().startsWith('-'))
-                        .map(point => `<li class="ml-8 text-gray-600">${point.replace('-', '').trim()}</li>`)
-                        .join('');
-                    
-                    return `
+            // Split section into lines
+            const lines = section.split('\n');
+            let html = '';
+            lines.forEach(line => {
+                const trimmed = line.trim();
+                if (trimmed.length === 0) return;
+                // Sub-point: starts with '-'
+                if (trimmed.startsWith('-')) {
+                    // Extract icon if present
+                    const iconMatch = trimmed.match(/<i class='([^']+)'><\/i>/);
+                    const icon = iconMatch ? `<i class='${iconMatch[1]}'></i>` : '';
+                    const text = trimmed.replace(/<i class='[^']+'><\/i>/, '').replace('-', '').trim();
+                    html += `
+                        <div class="flex items-start ml-8 mb-1">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span class="text-gray-600">${icon} ${text}</span>
+                        </div>
+                    `;
+                } else if (/^\d+\./.test(trimmed)) {
+                    // Hauptpunkt (Nummerierung)
+                    // Extract icon if present
+                    const iconMatch = trimmed.match(/<i class='([^']+)'><\/i>/);
+                    const icon = iconMatch ? `<i class='${iconMatch[1]}'></i>` : '';
+                    // Remove number and icon
+                    const text = trimmed.replace(/^\d+\.\s*/, '').replace(/<i class='[^']+'><\/i>/, '').trim();
+                    html += `
                         <div class="recommendation-item mb-3">
                             <div class="flex items-start">
                                 <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                                <div>
-                                    <span class="font-medium">${title.trim()}</span>
-                                    ${subPointsHTML ? `<ul class="mt-1">${subPointsHTML}</ul>` : ''}
-                                </div>
+                                <span class="font-medium">${icon} ${text}</span>
                             </div>
                         </div>
                     `;
+                } else {
+                    // Freitext (z.B. Einleitung)
+                    html += `<div class="text-gray-700 mb-2">${trimmed}</div>`;
                 }
-                return `
-                    <div class="recommendation-item mb-3">
-                        <div class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
-                            <span>${content.trim()}</span>
-                        </div>
-                    </div>
-                `;
             });
+            return html;
         }).join('');
         
         resultsHTML += `
