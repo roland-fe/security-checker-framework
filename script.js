@@ -75,34 +75,34 @@ const questions = [
         id: 5,
         text: "Haben Sie eine Backup-Strategie für Ihre wichtigen Daten?",
         yesRecommendation: "Ausgezeichnet! Hier sind einige Best Practices für Ihre Backup-Strategie:\n\n" +
-            "1. Nutzen Sie die 3-2-1-Regel:\n" +
-            "   - 3 Kopien Ihrer Daten\n" +
-            "   - 2 verschiedene Speichermedien\n" +
-            "   - 1 Backup an einem anderen Ort\n" +
-            "2. Automatisieren Sie Ihre Backups\n" +
-            "3. Testen Sie regelmäßig die Wiederherstellung\n" +
-            "4. Verschlüsseln Sie Ihre Backups\n" +
-            "5. Nutzen Sie eine Kombination aus:\n" +
-            "   - Lokalen Backups (externe Festplatten)\n" +
-            "   - Cloud-Backups (z.B. Backblaze, iCloud)\n" +
-            "   - NAS-Systemen für Zuhause",
+            "1. <i class='fas fa-shield-alt'></i> Nutzen Sie die 3-2-1-Regel:\n" +
+            "   - <i class='fas fa-copy'></i> 3 Kopien Ihrer Daten\n" +
+            "   - <i class='fas fa-hdd'></i> 2 verschiedene Speichermedien\n" +
+            "   - <i class='fas fa-building'></i> 1 Backup an einem anderen Ort\n" +
+            "2. <i class='fas fa-robot'></i> Automatisieren Sie Ihre Backups\n" +
+            "3. <i class='fas fa-vial'></i> Testen Sie regelmäßig die Wiederherstellung\n" +
+            "4. <i class='fas fa-lock'></i> Verschlüsseln Sie Ihre Backups\n" +
+            "5. <i class='fas fa-layer-group'></i> Nutzen Sie eine Kombination aus:\n" +
+            "   - <i class='fas fa-hdd'></i> Lokalen Backups (externe Festplatten)\n" +
+            "   - <i class='fas fa-cloud'></i> Cloud-Backups (z.B. Backblaze, iCloud)\n" +
+            "   - <i class='fas fa-server'></i> NAS-Systemen für Zuhause",
         noRecommendation: "Eine robuste Backup-Strategie ist essentiell für den Schutz Ihrer Daten. Hier ist ein konkreter Aktionsplan:\n\n" +
-            "1. Identifizieren Sie Ihre wichtigen Daten:\n" +
-            "   - Dokumente\n" +
-            "   - Fotos\n" +
-            "   - E-Mails\n" +
-            "   - Kontakte\n" +
-            "2. Implementieren Sie die 3-2-1-Regel:\n" +
-            "   - 3 Kopien Ihrer Daten\n" +
-            "   - 2 verschiedene Speichermedien\n" +
-            "   - 1 Backup an einem anderen Ort\n" +
-            "3. Wählen Sie geeignete Backup-Lösungen:\n" +
-            "   - Externe Festplatten für lokale Backups\n" +
-            "   - Cloud-Dienste (z.B. Backblaze, iCloud)\n" +
-            "   - NAS-Systeme für Zuhause\n" +
-            "4. Automatisieren Sie Ihre Backups\n" +
-            "5. Testen Sie regelmäßig die Wiederherstellung\n" +
-            "6. Verschlüsseln Sie Ihre Backups",
+            "1. <i class='fas fa-search'></i> Identifizieren Sie Ihre wichtigen Daten:\n" +
+            "   - <i class='fas fa-file-alt'></i> Dokumente\n" +
+            "   - <i class='fas fa-image'></i> Fotos\n" +
+            "   - <i class='fas fa-envelope'></i> E-Mails\n" +
+            "   - <i class='fas fa-address-book'></i> Kontakte\n" +
+            "2. <i class='fas fa-shield-alt'></i> Implementieren Sie die 3-2-1-Regel:\n" +
+            "   - <i class='fas fa-copy'></i> 3 Kopien Ihrer Daten\n" +
+            "   - <i class='fas fa-hdd'></i> 2 verschiedene Speichermedien\n" +
+            "   - <i class='fas fa-building'></i> 1 Backup an einem anderen Ort\n" +
+            "3. <i class='fas fa-tools'></i> Wählen Sie geeignete Backup-Lösungen:\n" +
+            "   - <i class='fas fa-hdd'></i> Externe Festplatten für lokale Backups\n" +
+            "   - <i class='fas fa-cloud'></i> Cloud-Dienste (z.B. Backblaze, iCloud)\n" +
+            "   - <i class='fas fa-server'></i> NAS-Systeme für Zuhause\n" +
+            "4. <i class='fas fa-robot'></i> Automatisieren Sie Ihre Backups\n" +
+            "5. <i class='fas fa-vial'></i> Testen Sie regelmäßig die Wiederherstellung\n" +
+            "6. <i class='fas fa-lock'></i> Verschlüsseln Sie Ihre Backups",
         isPositiveOnNo: false  // "Ja" ist die sichere Antwort
     }
 ];
@@ -167,20 +167,59 @@ function showResults() {
     answers.forEach((answer, index) => {
         const question = questions[index];
         const recommendation = answer.answer ? question.yesRecommendation : question.noRecommendation;
-        // Prüfe, ob die aktuelle Antwort die sichere Option ist
         const isPositive = answer.answer ? !question.isPositiveOnNo : question.isPositiveOnNo;
+        
+        // Split recommendations into sections
+        const sections = recommendation.split('\n\n');
+        const mainText = sections[0];
+        const recommendations = sections.slice(1).map(section => {
+            // Convert numbered lists to structured HTML
+            return section.replace(/^\d+\.\s+(.*)$/gm, (match, content) => {
+                // Check if the content contains sub-points
+                if (content.includes(':')) {
+                    const [title, ...subPoints] = content.split(':');
+                    const subPointsHTML = subPoints.join(':').split('\n')
+                        .filter(point => point.trim().startsWith('-'))
+                        .map(point => `<li class="ml-8 text-gray-600">${point.replace('-', '').trim()}</li>`)
+                        .join('');
+                    
+                    return `
+                        <div class="recommendation-item mb-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                                <div>
+                                    <span class="font-medium">${title.trim()}</span>
+                                    ${subPointsHTML ? `<ul class="mt-1">${subPointsHTML}</ul>` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                }
+                return `
+                    <div class="recommendation-item mb-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-2"></i>
+                            <span>${content.trim()}</span>
+                        </div>
+                    </div>
+                `;
+            });
+        }).join('');
         
         resultsHTML += `
             <div class="result-item bg-white p-6 rounded-lg shadow-md border-l-4 ${isPositive ? 'border-green-500' : 'border-red-500'}">
                 <div class="flex items-start">
                     <div class="flex-shrink-0 mr-4">
                         <span class="text-2xl ${isPositive ? 'text-green-500' : 'text-red-500'}">
-                            ${isPositive ? '✓' : '✗'}
+                            ${isPositive ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-times-circle"></i>'}
                         </span>
                     </div>
-                    <div>
-                        <h3 class="text-lg font-semibold mb-2">${question.text}</h3>
-                        <p class="text-gray-700">${recommendation}</p>
+                    <div class="flex-grow">
+                        <h3 class="text-lg font-semibold mb-3">${question.text}</h3>
+                        <div class="text-gray-700 mb-4">${mainText}</div>
+                        <div class="recommendations-list">
+                            ${recommendations}
+                        </div>
                     </div>
                 </div>
             </div>
@@ -190,7 +229,8 @@ function showResults() {
     resultsHTML += `
         </div>
         <div class="mt-8">
-            <button onclick="resetQuiz()" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600">
+            <button onclick="resetQuiz()" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 flex items-center">
+                <i class="fas fa-redo mr-2"></i>
                 Erneut starten
             </button>
         </div>
