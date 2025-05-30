@@ -1,0 +1,31 @@
+/* Custom styles to complement Tailwind */
+.question-card {
+    transition: all 0.3s ease;
+}
+
+.question-card:hover {
+    transform: translateY(-2px);
+}
+
+.btn-answer {
+    transition: all 0.2s ease;
+}
+
+.btn-answer:hover {
+    transform: scale(1.05);
+}
+
+.result-item {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+} 
