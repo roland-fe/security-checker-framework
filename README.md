@@ -8,7 +8,7 @@ This tool helps users improve their digital security and protect themselves onli
 
 ## How to Use
 
-1. Open [https://security-check.tech-mitra.com](https://security-check.tech-mitra.com) in your browser.
+1. Open <a href="https://security-check.tech-mitra.com" target="_blank" rel="noopener noreferrer">https://security-check.tech-mitra.com</a> in your browser.
 2. Answer the questions about your security habits.
 3. Review your personal recommendations and tips.
 
