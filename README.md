@@ -26,4 +26,4 @@ This tool helps users improve their digital security and protect themselves onli
 
 ---
 
-Feel free to share or embed this tool to help make the internet a safer place!
+Feel free to share or embed this tool to help make the internet a safer place!!
