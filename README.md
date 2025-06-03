@@ -1,58 +1,29 @@
 # Security Checker
 
-Ein einfacher Security-Checker für WordPress-Seiten, der Benutzern hilft, ihre digitale Sicherheit zu überprüfen.
+This tool helps users improve their digital security and protect themselves online. By answering a few simple questions, you receive personalized recommendations on how to secure your accounts, devices, and data.
 
-## Features
+- No data is stored or transmitted.
+- Free to use, copy, and share.
+- Clean, modern, and responsive design.
 
-- 5 wichtige Sicherheitsfragen
-- Einfache Ja/Nein-Antworten
-- Personalisierte Handlungsempfehlungen
-- Modernes, schlichtes Design
-- Keine Datenspeicherung
-- Einfache Integration in WordPress
+## How to Use
 
-## Installation
+1. Open [https://security-check.tech-mitra.com](https://security-check.tech-mitra.com) in your browser.
+2. Answer the questions about your security habits.
+3. Review your personal recommendations and tips.
 
-1. Laden Sie alle Dateien in ein Verzeichnis auf Ihrem Webhosting hoch
-2. Die Dateien sollten folgende Struktur haben:
-   ```
-   security-checker/
-   ├── index.html
-   ├── styles.css
-   ├── script.js
-   └── README.md
-   ```
+## Customization
 
-## WordPress Integration
+- You can easily adapt the questions in the `script.js` file.
+- The design can be changed in `styles.css` or directly in the HTML using Tailwind CSS classes.
 
-Es gibt zwei Möglichkeiten, den Security-Checker in Ihre WordPress-Seite zu integrieren:
-
-### Option 1: iFrame Einbindung
-
-Fügen Sie folgenden Code in Ihre WordPress-Seite ein:
-
-```html
-<iframe src="https://ihre-domain.de/security-checker/" width="100%" height="800px" frameborder="0"></iframe>
-```
-
-### Option 2: Direkter Link
-
-Erstellen Sie einen Link zu Ihrer Security-Checker-Seite:
-
-```html
-<a href="https://ihre-domain.de/security-checker/" target="_blank">Security-Check durchführen</a>
-```
-
-## Anpassung
-
-- Die Fragen können in der `script.js` Datei angepasst werden
-- Das Design kann über die `styles.css` Datei angepasst werden
-- Tailwind CSS Klassen können in der `index.html` angepasst werden
-
-## Technische Details
+## Technical Details
 
 - Vanilla JavaScript
-- Tailwind CSS für das Design
-- Keine Datenbankanbindung
-- Responsive Design
-- Keine externen Abhängigkeiten (außer Tailwind CSS CDN) 
+- Tailwind CSS for styling
+- No backend, no database, no tracking
+- 100% client-side, works in any modern browser
+
+---
+
+Feel free to share or embed this tool to help make the internet a safer place!
