@@ -134,18 +134,31 @@ function startQuiz() {
 function showQuestion(index) {
     const questionContainer = document.getElementById('question-container');
     const question = questions[index];
-    
+
+    // Passende Icons für jede Frage (Font Awesome Free)
+    const questionIcons = [
+        '<i class="fas fa-key"></i>', // Passwort-Frage
+        '<i class="fas fa-shield-alt"></i>', // 2FA-Frage
+        '<i class="fas fa-sync-alt"></i>', // Updates
+        '<i class="fas fa-wifi"></i>', // Öffentliches WLAN
+        '<i class="fas fa-hdd"></i>' // Backup
+    ];
+    const icon = questionIcons[index] || '<i class="fas fa-question-circle"></i>';
+
     questionContainer.innerHTML = `
-        <div class="question-card bg-white p-6 rounded-lg shadow-md">
-            <h2 class="text-xl font-semibold mb-4">Question ${index + 1} of ${questions.length}</h2>
-            <p class="text-gray-700 mb-6">${question.text}</p>
-            <div class="flex space-x-4">
-                <button onclick="answerQuestion(true)" class="btn-answer bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">
-                    Yes
-                </button>
-                <button onclick="answerQuestion(false)" class="btn-answer bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">
-                    No
-                </button>
+        <div class="question-card bg-white p-6 rounded-lg shadow-md flex items-start">
+            <div class="text-3xl text-blue-500 mr-5 mt-1">${icon}</div>
+            <div class="flex-1">
+                <h2 class="text-xl font-semibold mb-4">Question ${index + 1} of ${questions.length}</h2>
+                <p class="text-gray-700 mb-6">${question.text}</p>
+                <div class="flex space-x-4">
+                    <button onclick="answerQuestion(true)" class="btn-answer bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600">
+                        Yes
+                    </button>
+                    <button onclick="answerQuestion(false)" class="btn-answer bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600">
+                        No
+                    </button>
+                </div>
             </div>
         </div>
     `;
