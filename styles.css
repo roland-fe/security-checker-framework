@@ -28,4 +28,17 @@
         opacity: 1;
         transform: translateY(0);
     }
-} 
+}
+
+@media print {
+  body * { display: none !important; }
+  #todo-print-area, #todo-print-area * { display: block !important; }
+  #todo-print-area {
+    position: static !important;
+    background: white !important;
+    color: black !important;
+    box-shadow: none !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
