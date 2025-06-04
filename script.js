@@ -115,6 +115,18 @@ let answers = [];
 
 // Initialize the application
 function init() {
+    // Hide question/result containers initially
+    document.getElementById('question-container').classList.add('hidden');
+    document.getElementById('result-container').classList.add('hidden');
+    // Show intro
+    document.getElementById('intro-container').classList.remove('hidden');
+    // Add event listener for start button
+    document.getElementById('start-button').addEventListener('click', startQuiz);
+}
+
+function startQuiz() {
+    document.getElementById('intro-container').classList.add('hidden');
+    document.getElementById('question-container').classList.remove('hidden');
     showQuestion(currentQuestionIndex);
 }
 
@@ -255,9 +267,8 @@ function resetQuiz() {
     currentQuestionIndex = 0;
     answers = [];
     document.getElementById('result-container').classList.add('hidden');
-    document.getElementById('question-container').classList.remove('hidden');
-    showQuestion(currentQuestionIndex);
-    
+    document.getElementById('question-container').classList.add('hidden');
+    document.getElementById('intro-container').classList.remove('hidden');
     // Scroll to top smoothly
     window.scrollTo({
         top: 0,
