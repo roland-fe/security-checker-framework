@@ -179,6 +179,33 @@ function answerQuestion(answer) {
     }
 }
 
+// Hilfsfunktion: ToDo-Print-Ansicht generieren
+function showTodoPrintArea() {
+    // Nur offene ToDos (alle riskanten Antworten)
+    const unchecked = answers
+        .map((answer, idx) => {
+            const question = questions[idx];
+            const isRisk = (question.isPositiveOnNo && answer.answer) || (!question.isPositiveOnNo && !answer.answer);
+            return isRisk ? idx : null;
+        })
+        .filter(idx => idx !== null);
+    const printArea = document.getElementById('todo-print-area');
+    printArea.innerHTML = '';
+    if (unchecked.length === 0) {
+        printArea.innerHTML = '<div class="p-8 text-lg">Great! You have no open ToDos.</div>';
+        return;
+    }
+    // Überschrift
+    printArea.innerHTML = '<h2 class="text-2xl font-bold text-gray-800 mb-6">Your Security Analysis – ToDo Checklist</h2>';
+    // Nur relevante Ergebnis-Boxen klonen
+    const allResults = Array.from(document.querySelectorAll('.result-item'));
+    unchecked.forEach(idx => {
+        const clone = allResults[idx].cloneNode(true);
+        clone.style.marginBottom = '24px';
+        printArea.appendChild(clone);
+    });
+}
+
 // Display the results
 function showResults() {
     const questionContainer = document.getElementById('question-container');
@@ -262,17 +289,18 @@ function showResults() {
         `;
     });
     
-    resultsHTML += `
-        </div>
-        <div class="mt-8">
+    resultContainer.innerHTML = resultsHTML + `
+        <div class="mt-8 flex flex-col items-center gap-4">
             <button onclick="resetQuiz()" class="bg-blue-500 text-white px-6 py-2 rounded-lg hover:bg-blue-600 flex items-center">
                 <i class="fas fa-redo mr-2"></i>
                 Restart
             </button>
+            <button onclick="showTodoPrintArea();window.print();" class="bg-green-500 text-white px-6 py-2 rounded-lg hover:bg-green-600 flex items-center print:hidden">
+                <i class="fas fa-print mr-2"></i>
+                Print checklist / save as PDF
+            </button>
         </div>
     `;
-    
-    resultContainer.innerHTML = resultsHTML;
 }
 
 // Reset the quiz
